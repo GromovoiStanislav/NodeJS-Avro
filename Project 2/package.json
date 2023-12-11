@@ -1,0 +1,18 @@
+{
+  "name": "avro-example",
+  "version": "0.0.1",
+  "description": "Avro example",
+  "keywords": [
+    "NodeJS",
+    "Avro"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node client.js"
+  },
+  "license": "",
+  "dependencies": {
+    "avsc": "^5.7.7"
+  }
+}
