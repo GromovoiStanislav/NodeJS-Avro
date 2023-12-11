@@ -23,5 +23,7 @@ const bufs = [
 
 // Декодирование каждого буфера
 const decodedData = bufs.map((buf) => type.fromBuffer(buf));
-
 console.log('Decoded Data:', decodedData);
+
+// Декодирование каждого буфера
+bufs.forEach((buf) => console.log('Decoded Data:', type.fromBuffer(buf)));
