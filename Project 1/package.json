@@ -13,7 +13,9 @@
     "example_3": "node example_3.js",
     "example_4": "node example_4.js",
     "example_5": "node example_5.js",
-    "example_6": "node example_6.js"
+    "example_6": "node example_6.js",
+    "example_7": "node example_7.js",
+    "example_8": "node example_8.js"
   },
   "license": "",
   "dependencies": {
