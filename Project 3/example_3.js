@@ -1,6 +1,4 @@
 import avsc from 'avsc';
-import snappy from 'snappy';
-import crc32 from 'buffer-crc32';
 
 const schema = {
   type: 'record',
@@ -32,23 +30,9 @@ const schema = {
   ],
 };
 
-const snappyEncoder = avsc.createFileEncoder('./snappy.avro', schema, {
-  snappy: (buf, cb) => {
-    const checksum = crc32(buf);
-    snappy.compress(buf, (err, deflated) => {
-      if (err) {
-        cb(err);
-        return;
-      }
-      const block = Buffer.alloc(deflated.length + 4);
-      deflated.copy(block);
-      checksum.copy(block, deflated.length);
-      cb(null, block);
-    });
-  },
-});
+const encoder = avsc.createFileEncoder('./users.avro', schema);
 
-snappyEncoder.write({
+encoder.write({
   first_name: 'Frank',
   last_name: 'Baele',
   children: [
@@ -59,7 +43,7 @@ snappyEncoder.write({
   ],
 });
 
-snappyEncoder.write({
+encoder.write({
   first_name: 'Peter',
   last_name: 'Peterson',
   children: [
@@ -74,15 +58,17 @@ snappyEncoder.write({
   ],
 });
 
-snappyEncoder.end();
+encoder.write({
+  first_name: 'Ann',
+  last_name: 'Peterson',
+  middle_name: 'Frank',
+  //children: [],
+});
+
+encoder.end();
 
 avsc
-  .createFileDecoder('./snappy.avro', {
-    snappy: (buf, cb) => {
-      // Avro appends checksums to compressed blocks, which we skip here.
-      return snappy.uncompress(buf.slice(0, buf.length - 4), cb);
-    },
-  })
+  .createFileDecoder('./users.avro')
   .on('metadata', (type) => {
     //console.log(type);
   })

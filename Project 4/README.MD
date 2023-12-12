@@ -1,4 +1,4 @@
-## Avro and Snappy example (JS)
+## Avro simple examples (JS)
 
 #### Run:
 
