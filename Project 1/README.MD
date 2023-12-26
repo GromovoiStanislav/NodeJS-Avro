@@ -12,4 +12,5 @@ npm run example_6
 npm run example_7
 npm run example_8
 npm run example_9
+npm run example_10
 ```

@@ -1,5 +1,5 @@
 const avro = require('avsc');
-const fs = require('fs');
+const fs = require('node:fs');
 
 // Процедура для получения Avro схемы
 function getAvroType() {
