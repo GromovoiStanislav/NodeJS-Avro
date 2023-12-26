@@ -4,3 +4,4 @@
 - 2 - Avro and TCP simple example (JS)
 - 3 - Avro and Snappy example (JS)
 - 4 - Avro simple examples (JS)
+- 5 - Kafka and Avro simple exapmple (JS)
